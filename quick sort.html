@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-color: lightgrey;
+			text-align: center;
+		}
+		h1{
+			background-color: white;
+			text-align: center;
+			color: green;
+		}	
+	</style>
+	<title>quick</title>
+</head>
+<body>
+	<h1>QUICK SORT IMPLEMENTATION</h1>
+	<div>
+		<input id ="put">
+		<button onclick="add(document.getElementById('put').value)">Add</button>
+	</div>
+    <div>
+    	<button onclick="show()">Array</button>
+    	<p id="1"></p>
+    </div>
+	<div>
+		<button onclick="sort()">Sort</button>
+		<p id="2"></p>
+	</div>
+
+	<script>
+		var array =[], arr =[];
+		var size = 0;
+
+		function push(element){
+            array[size] = element;
+            arr[size] = element;
+            size++;
+		}
+
+		function print(){
+			for (var i = 0; i <size; i++) {
+				arr[i];
+			}
+			return arr;
+		}
+
+function swap(items, firstIndex, secondIndex){
+    var temp = items[firstIndex];
+    items[firstIndex] = items[secondIndex];
+    items[secondIndex] = temp;
+}
+
+		function partition(items, left, right) {
+
+    var pivot   = items[Math.floor((right + left) / 2)],
+        i       = left,
+        j       = right;
+
+
+    while (i <= j) {
+
+        while (items[i] < pivot) {
+            i++;
+        }
+
+        while (items[j] > pivot) {
+            j--;
+        }
+
+        if (i <= j) {
+            swap(items, i, j);
+            i++;
+            j--;
+        }
+    }
+
+    return i;
+}
+function quickSort(items, left, right) {
+
+    var index;
+
+    if (items.length > 1) {
+
+        index = partition(items, left, right);
+
+        if (left < index - 1) {
+            quickSort(items, left, index - 1);
+        }
+
+        if (index < right) {
+            quickSort(items, index, right);
+        }
+
+    }
+
+    return items;
+}
+
+
+	function add(value){
+		value && push(value);
+		document.getElementById('put').value = '';
+	}
+
+	function show(){
+	   document.getElementById(1).innerHTML = print();
+	}
+
+	function sort(){
+		document.getElementById(2).innerHTML = quickSort(array, 0, size-1)
+	}
+	</script>
+</body>
+</html>

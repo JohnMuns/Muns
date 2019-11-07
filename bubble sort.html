@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-color: lightgrey;
+			text-align: center;
+		}
+		h1{
+			background-color: white;
+			text-align: center;
+			color: green;
+		}	
+	</style>
+	<title>Bubble</title>
+</head>
+<body>
+	<h1>BUBBLE SORT IMPLEMENTATION</h1>
+	<div>
+		<input id ="put">
+		<button onclick="add(document.getElementById('put').value)">Sort</button>
+	</div>
+	<div>
+		<button onclick="bsort()">Array</button>
+			<p id="1"></p>
+	</div>
+	<div>
+		<button onclick="sort()">Sort</button>
+		<p id="2"></p>
+	</div>
+
+	<script>
+	        var a = [], b = [];
+	        var size = 0;
+	        function push(arg) {
+	        		a[size] = arg;
+	        		b[size] = arg;
+	        	    size++;	
+	        }
+
+	        function print(){
+	        	for(var i = 0; i< size; i++){
+	        		 b[i];
+	        	}
+	        	return b;
+	        }
+
+	        function sortb(){
+	        	var temp;
+	        	for(var i = 0; i<= 10; i++){
+	        		for(var j = 0; j< i-1; j++){
+	        			if(a[j] > a[j+1]){
+	        				temp = a[j];
+	        	            a[j] = a[j+1];
+	        	            a[j+1] = temp;
+	        			}	        			
+	        		}
+	        	}
+	        	return a;
+	        }
+
+	        function add(value) {
+	        	value && push(value);
+	        	document.getElementById('put').value = '';
+	        }
+
+          function sort() {
+          	document.getElementById(2).innerHTML = sortb();
+          }
+          function bsort() {
+          	document.getElementById(1).innerHTML = print();
+          }
+
+	</script>
+
+</body>
+</html>
