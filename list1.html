@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-color: lightgrey;
+			text-align: left;
+		}
+		h1{
+			background-color: white;
+			text-align: center;
+		}
+		#you{
+			text-align: center; 
+		}
+	</style>
+	<title>singly linked list</title>
+</head>
+<body>
+	<h1>
+		SINGLY LINKED LIST.
+	</h1>
+	<div>
+		<input id="a" >
+		<button onclick="add(document.getElementById('a').value)">Add</button>
+	</div>
+	<div id="you">
+		<button onclick="show()">Elements</button><br>
+		Entrance
+		<p id="dad"></p>
+	</div>
+	<div>
+		<input id="b">
+		<button onclick="remove(document.getElementById('b').value)">Remove</button>
+	</div>
+	<div>
+		<input id="c" >
+		<button onclick="indexOf(document.getElementById('c').value)">Index</button>
+		<p id="1"></p>
+	</div>
+	<div id="you">
+		<button onclick="IsEmpty()">Check List</button>
+		<p id="2"></p>
+	</div>
+	<script>
+
+class Node {  
+	constructor(element) 
+	{ 
+		this.element = element; 
+		this.next = null;
+	} 
+} 
+
+
+class LinkedList { 
+	constructor() 
+	{ 
+		this.head = null; 
+		this.size = 0; 
+	} 
+add(element) 
+{ 
+	
+	var node = new Node(element); 
+
+	var current; 
+
+	if (this.head == null) 
+		this.head = node; 
+	else { 
+		current = this.head; 
+
+		while (current.next) { 
+			current = current.next; 
+		} 
+
+		current.next = node; 
+	} 
+	this.size++; 
+} 
+
+removeElement(element) 
+{ 
+	var current = this.head; 
+	var prev = null; 
+
+
+	while (current != null) { 
+
+		if (current.element === element) { 
+			if (prev == null) { 
+				this.head = current.next; 
+			} else { 
+				prev.next = current.next; 
+			} 
+			this.size--; 
+			return current.element; 
+		} 
+		prev = current; 
+		current = current.next; 
+	} 
+	return -1; 
+} 
+
+indexOf(element) 
+{ 
+	var count = 0; 
+	var current = this.head; 
+
+	while (current != null) { 
+		if (current.element == element) 
+			return count; 
+		count++; 
+		current = current.next; 
+	} 
+
+ 
+	return -1; 
+} 
+
+isEmpty() 
+{ 
+	return this.size == 0; 
+} 
+printList() 
+{ 
+	var curr = this.head; 
+	var str = ""; 
+	while (curr) { 
+		str += curr.element + " <br>"; 
+		curr = curr.next; 
+	} 
+	document.getElementById('dad').innerHTML = str; 
+} 
+
+} 
+
+
+var ll = new LinkedList(); 
+
+function remove(value2){ 
+	value2 && ll.removeElement(value2);
+	document.getElementById('b').value = '';
+}
+function indexOf(value3){ 
+	value3 && ll.indexOf(value3);
+	document.getElementById('c').value = '';	
+    document.getElementById(1).innerHTML = "Index of " + value3+ '  :  '  + ll.indexOf(value3)+'<br>'; 
+}
+
+
+function IsEmpty(){
+   document.getElementById(2).innerHTML ="IsEmpty :  " + ll.isEmpty()+'<br>' ; 
+}
+
+function add(value1){ 
+	value1 && ll.add(value1);
+	document.getElementById('a').value = '';
+}
+ 
+
+//document.write(ll.size_of_list()+'<br>'); 
+ 
+
+function show(){
+	ll.printList(); 
+} 
+ 
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-color: lightgrey;
+			text-align: center;
+		}
+		h1{
+			background-color: white;
+			text-align: center;
+			color: green;
+		}
+	
+		
+	</style>
+	<title>stack</title>
+</head>
+<body>
+	<h1>STACK IMPLEMENTATION</h1>
+	<hr>
+	<div>
+		enter an element<br>
+		<input id="item-input" >
+		<button onclick="add(document.getElementById('item-input').value)">push</button>
+	</div>
+	<hr>
+	<button onclick = 'show()'>Elements</button>
+	<p id = '1'></p>
+	<hr>
+	<button onclick = 'length()'>length</button>
+	<p id = '2'></p>
+	<hr>
+	<button onclick = 'high()'>peek</button>
+	<p id = '3'></p>
+	<hr>
+	<button onclick = 'remove()'>pop</button>
+	<p id = '4'></p>
+	<hr>
+	<button onclick = 'empty()'>isempty</button>
+	<p id = '5'></p>
+	<hr>
+	<script>
+	class Stack {  
+		constructor() { 
+			this.items = []; 
+			this.length = 0;
+		} 
+		push(element){ 
+			if (this.length >= 10) 
+				return; 
+				this.items[this.length] = element;
+				this.length++;
+		} 
+		pop(element){ 
+
+			if(this.length>0)
+			this.length--;
+			
+		} 
+ 
+		peek() { 
+			if (this.length <= 0) 
+				return "Null";
+			return this.items[this.length-1]; 
+		} 
+		isEmpty(){ 
+			return this.length <= 0; 
+		}
+		printlength(){
+			if (this.length <= -1) 
+				return -1;
+			return this.length;
+		} 
+		printStack(){
+             if (this.length > 10) {
+             	return 'Full';
+             }
+	      if(this.length <= 0){
+		 return 'Empty';
+	      }
+           var str = ""; 
+               for (var i = this.length-1; i > -1; i--) 
+            str += this.items[i] + "<br>"; 
+            return str;
+           
+		}
+	}
+	let stack = new Stack(); 
+    function empty(){
+    	document.getElementById(5).innerHTML = stack.isEmpty();
+    }
+ 
+    function add(value){
+	value && stack.push(value);
+	document.getElementById('item-input').value = "";
+}
+	function show(){
+		document.getElementById(1).innerHTML ='TOP'+'<br>'+stack.printStack()+'<br>'+'BOTTOM'; 
+	} 
+	  
+	function length(){
+	   document.getElementById(2).innerHTML ='length   :'+stack.printlength(); 	
+	}
+      
+	   function high(){
+	  	document.getElementById(3).innerHTML ='highest  :'+stack.peek() ; 
+	  }
+	   function remove(){
+	  	document.getElementById(4).innnerHTML ='popped element    :'+stack.pop(); 
+	  }
+   
+	</script>
+
+</body>
+</html>
