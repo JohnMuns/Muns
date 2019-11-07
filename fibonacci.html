@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    body{
+      background-color: lightgrey;
+      text-align: center;
+    }
+    h1{
+      background-color: white;
+      text-align: center;
+    }
+    
+  </style>
+  <meta charset="utf-8">
+  <title>Fibonacci Series</title>
+</head>
+<body>
+  <h1>FIBONACCI IMPLEMENTATION</h1>
+  <div >
+      <input id="number-input" placeholder="number" />
+      <button id="get-button">Get Fibonacci</button>
+    </div>
+
+  <p id="dad"></p>
+  <script>
+function fibonacci_series(n) {
+  if (n===1){
+    return [0, 1];
+  }else{
+    var s = fibonacci_series(n - 1);
+    s.push(s[s.length - 1] + s[s.length - 2]);
+    return s ;
+  }
+}
+ var button = document.getElementById("get-button");
+         var input = document.getElementById("number-input");
+         button.onclick = function(ev){
+          var n = input.value.trim();
+          if(n){
+            var result = fibonacci_series(parseInt(n));
+            document.getElementById('dad').innerHTML = result;
+          }
+         }
+
+ 
+ document.getElementById('dad').innerHTML = fibonacci_series(n);
+  </script>
+
+</body>
+</html>
