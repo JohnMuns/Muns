@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./fib.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-div" style="background-color: yellow;">
+        <div id="disk-1"></div>
+        <div id="disk-2"></div>
+        <div id="disk-3"></div>
+        <div id="pole-1"></div>
+        <div id="pole-2"></div>
+        <div id="pole-3"></div>
+        <div id="base-1"></div>
+        <div id="base-2"></div>
+        <div id="base-3"></div>
+    </div>
+    <br>
+    <div>
+        <button role="play" id="play-btn">Play</button>
+        <button role='stop' id='stop-btn'>Stop</button>
+    </div>
+    <script src="./jQuery.js"></script>
+    <script>
+        $(document).ready(()=> {
+            let disk_1 = $('#disk-1');
+            let disk_2 = $('#disk-2');
+            let disk_3 = $('#disk-3');
+            let disk_3_top = 0;
+            let disk_3_left = 0;
+            let time_out = .5;
+            $('#play-btn').click(() => {
+                let top = 100;
+                let mover = setInterval( () => {
+                    if ( top == 0 ) {
+                        clearInterval(mover);
+                        console.log('reached top');
+                        let disk_1_left = 75;
+                        let left_mover = setInterval( () => {
+                            console.log('moving left');
+                           if ( disk_1_left == 365) {
+                               console.log('stop');
+                                clearInterval(left_mover);
+                                top = 0;
+                                let down_mover = setInterval( () => {
+                                    if ( top == 120) {
+                                        console.log('stoping on reaching down');
+                                        clearInterval(down_mover);
+                                        let disk_2_top = 100;
+                                        let disk_2_mover = setInterval(() => {
+                                            console.log('moving disk 2');
+                                            if ( disk_2_top == 0 ) {
+                                                console.log('stopping disk 2');
+                                                clearInterval(disk_2_mover);
+                                                let disk_2_left = 65;
+                                                disk_2_mover = setInterval( () => {
+                                                    if ( disk_2_left == 215) {
+                                                        console.log('stopping disk 2');
+                                                        clearInterval(disk_2_mover);
+                                                        // we move disk 2 down
+                                                        disk_2_top = 0;
+                                                        disk_2_mover = setInterval( () => {
+                                                            if ( disk_2_top == 110) {
+                                                                console.log('stopping disk 2');
+                                                                clearInterval(disk_2_mover);
+                                                                // moving disk 1 into pole 2
+                                                                let disk_1_top = 120;
+                                                                disk_1_mover = setInterval(() => {
+                                                                    console.log('moving disk 1 up again');
+                                                                    if ( disk_1_top == 0 ){
+                                                                        console.log('disk 1 reached up, stooping it');
+                                                                        clearInterval(disk_1_mover);
+                                                                     
+                                                                        disk_1_mover = setInterval( () => {
+                                                                            console.log('moving let to pole 2');
+                                                                            if ( disk_1_left == 225) {
+                                                                                console.log('stoping disk 1 has arrived');
+                                                                                clearInterval(disk_1_mover);
+                                                                                // here we are
+                                                                                disk_1_mover = setInterval(() => {
+                                                                                    if(disk_1_top ==110){
+                                                                                        clearInterval(disk_1_mover);
+                                                                                        console.log('moving disk 3 now');
+                                                                                        disk_3_top = 100;
+                                                                                        let disk_3_mover = setInterval(() => {
+                                                                                            if ( disk_3_top == -10 ) {
+                                                                                                console.log('stop disk 3 its up now');
+                                                                                                clearInterval(disk_3_mover);
+                                                                                                // moving left now 
+                                                                                                disk_3_left = 55
+                                                                                                disk_3_mover = setInterval(() => {
+                                                                                                    if (disk_3_left == 350) {
+                                                                                                        clearInterval(disk_3_mover);
+                                                                                                        // move disk 3 three
+                                                                                                        disk_3_top = -10;
+                                                                                                        disk_3_mover = setInterval( () => {
+                                                                                                            if ( disk_3_top == 100) {
+                                                                                                                clearInterval(disk_3_mover);
+                // changed indentations
+                // moving disk 1 upp
+                disk_1_mover = setInterval(() => {
+                    if( disk_1_top == 0) {
+                        clearInterval(disk_1_mover)
+                        // move disk 1 left
+                        disk_1_mover = setInterval(() => {
+                            if ( disk_1_left == 75) {
+                                clearInterval(disk_1_mover);
+                                // moving disk 1 down
+                                disk_1_mover = setInterval(() => {
+                                    if ( disk_1_top == 120) {
+                                        clearInterval(disk_1_mover);
+                                        // moving disk 2 up
+                                        disk_2_mover = setInterval(() => {
+                                            if ( disk_2_top == 0) {
+                                                clearInterval(disk_2_mover)
+                                                // move disk 2 left
+                                                disk_2_mover = setInterval(() => {
+                                                    if ( disk_2_left == 355) {
+                                                        clearInterval(disk_2_mover);
+                                                        // move it down
+                                                        disk_2_mover = setInterval(() => {
+                                                            if ( disk_2_top == 100) {
+                                                                clearInterval(disk_2_mover);
+                                                                // finale moving disk one lastly
+                                                                disk_1_mover = setInterval(() => {
+                                                                    if ( disk_1_top == 0) {
+                                                                        clearInterval(disk_1_mover);
+                                                                        // disk 1 left
+                                                                        disk_1_mover = setInterval(() => {
+                                                                            console.log('disk one moving', disk_1_left)
+                                                                            if ( disk_1_left == 365) {
+                                                                                clearInterval(disk_1_mover);
+                                                                                // move disk 1 down
+                                                                                disk_1_mover = setInterval(() => {
+                                                                                    if ( disk_1_top == 100) {
+                                                                                        clearInterval(disk_1_mover);
+                                                                                    }
+                                                                                    disk_1.css(
+                                                                                        {
+                                                                                            top: disk_1_top
+                                                                                        }
+                                                                                    );
+                                                                                    disk_1_top++;
+                                                                                }, time_out);
+                                                                            }
+                                                                            disk_1.css({
+                                                                                left: disk_1_left
+                                                                            });
+                                                                            disk_1_left++;
+                                                                        }, time_out);
+                                                                    }
+                                                                    disk_1.css({
+                                                                        top: disk_1_top
+                                                                    });
+                                                                    disk_1_top--;
+                                                                }, time_out);
+                                                            }
+                                                            disk_2.css({
+                                                                top: disk_2_top
+                                                            });
+                                                            disk_2_top++;
+                                                        }, time_out);
+                                                    }
+                                                    disk_2.css({
+                                                        left: disk_2_left
+                                                    });
+                                                    disk_2_left++;
+                                                }, time_out);
+                                            }
+                                            disk_2.css({
+                                                top: disk_2_top
+                                            });
+                                            disk_2_top--;
+                                        }, time_out);
+                                    }
+                                    disk_1.css({
+                                        top: disk_1_top
+                                    });
+                                    disk_1_top++;
+                                }, time_out);
+                            }
+                            disk_1.css(
+                                {
+                                    left: disk_1_left
+                                }
+                            );
+                            disk_1_left--;
+                        }, time_out);
+                    }
+                    disk_1.css(
+                        {
+                            top: disk_1_top
+                        }
+                    );
+                    disk_1_top--;
+                }, time_out);
+                                                                                                            }
+                                                                                                            disk_3.css(
+                                                                                                                {
+                                                                                                                    top: disk_3_top
+                                                                                                                }
+                                                                                                            );
+                                                                                                            disk_3_top++;
+                                                                                                        },time_out);
+                                                                                                    }
+                                                                                                    disk_3.css(
+                                                                                                        {
+                                                                                                            left: disk_3_left
+                                                                                                        }
+                                                                                                    );
+                                                                                                    disk_3_left++;
+                                                                                                }, time_out);
+                                                                                            }
+                                                                                            disk_3.css({
+                                                                                                top: disk_3_top
+                                                                                            });
+                                                                                            disk_3_top--;
+                                                                                        },time_out);
+
+                                                                                    }
+                                                                                    disk_1.css(
+                                                                                        {
+                                                                                            top: disk_1_top
+                                                                                        }
+                                                                                    );
+                                                                                    disk_1_top++;
+                                                                                }, time_out);
+                                                                            }
+                                                                            disk_1.css(
+                                                                                {
+                                                                                    left: disk_1_left
+                                                                                }
+                                                                            );
+                                                                            disk_1_left--;
+                                                                        },time_out);
+
+                                                                    }
+
+                                                                    disk_1.css(
+                                                                        {
+                                                                            top: disk_1_top
+                                                                        }
+                                                                    );
+                                                                    disk_1_top--;
+                                                                }, time_out);
+                                                            }
+                                                            disk_2.css({
+                                                                top: disk_2_top
+                                                            });
+                                                            disk_2_top++;
+                                                        }, time_out);
+                                                    }
+                                                    disk_2.css({
+                                                        left: disk_2_left
+                                                    });
+                                                    disk_2_left++;
+                                                }, time_out);
+                                            }
+                                            disk_2.css(
+                                                {
+                                                    top: disk_2_top
+                                                }
+                                            );
+                                            disk_2_top--;
+                                        }, time_out);
+                                    }
+                                    disk_1.css(
+                                        {
+                                            top: top
+                                        }
+                                    );
+                                    top++;
+                                }, time_out);
+                           }
+                           disk_1.css(
+                               {
+                                   left: disk_1_left
+                               }
+                           );
+                            disk_1_left++;
+                        }, time_out);
+                    }
+                    disk_1.css(
+                    {
+                        top: top
+                    }
+                );
+                top--;
+                }, time_out);
+            });
+        })
+    </script>
+</body>
+</html>
