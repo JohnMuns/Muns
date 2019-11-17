@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-color: lightgrey;
+			text-align: left;
+		}
+		h1{
+			background-color: white;
+			text-align: center;
+		}
+		#you{
+			text-align: center; 
+		}
+	</style>
+	<title>Doubly linked list</title>
+</head>
+<body>
+	<h1>
+		DOUBLY LINKED LIST.
+	</h1>
+	<div>
+		<input id="a" placeholder="Item">
+		<button onclick="add(document.getElementById('a').value)">Add</button>
+	</div>
+	<div id="you">
+		<button onclick="show()">Elements</button><br>
+		Entrance
+		<p id="dad"></p>
+	</div>
+	<div>
+		<input id="b" placeholder="Index">
+		<button onclick="remove(document.getElementById('b').value)">Remove</button>
+	</div>
+
+	<script>
+
+class DoublyLinkedListNode {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+        this.previous = null;
+    }
+}
+
+
+
+class DoublyLinkedList {
+
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+    
+    add(data) {
+
+        const newNode = new DoublyLinkedListNode(data);
+                
+        if (this.head == null) {
+            this.head = newNode;
+        } else {
+
+            this.tail.next = newNode;
+            newNode.previous = this.tail;
+        }
+
+        this.tail = newNode;
+    }
+
+    removeElement(index) {
+    
+        if ((this.head == null) || (index < 0)) {
+            throw new RangeError(`Index ${index} does not exist in the list.`);
+        }
+
+        if (index == 0) {
+
+            const data = this.head.data;
+
+            this.head = this.head.next;
+
+            if (this.head == null) {
+                this.tail = null;
+            } else {
+                this.head.previous = null;
+            }
+
+            return data;
+        }
+
+        let current = this.head;
+
+        let i = 0;
+
+        while ((current != null) && (i < index)) {
+
+            current = current.next;
+
+            i++;
+        }
+
+        if (current != null) {
+
+            current.previous.next = current.next;
+
+            if (this.tail == current) {
+                this.tail = current.previous;
+            } else {
+                current.next.previous = current.previous;
+            }
+
+            return current.data;
+        }
+        throw new RangeError(`Index ${index} does not exist in the list.`);
+    }
+
+    get(index) {
+    
+        if (index > -1) {
+
+            let current = this.head;
+
+            let i = 0;
+
+            while ((current !== null) && (i < index)) {
+                current = current.next;
+                i++;          
+            }
+        
+            return current !== null ? current.data : undefined;
+        } else {
+            return undefined;
+        }
+    }
+    display() {
+    	var str = '';
+      let currNode = this.head;
+      while (currNode != null) {
+      str += (currNode.data + " ");
+      currNode = currNode.next;
+   }
+   return str;
+
+}
+
+}
+
+
+var ll = new DoublyLinkedList(); 
+
+function remove(value2){ 
+	value2 && ll.removeElement(value2);
+	document.getElementById('b').value = '';
+}
+/*function indexOf(value3){ 
+	value3 && ll.indexOf(value3);
+	document.getElementById('c').value = '';	
+    document.getElementById(1).innerHTML = "Index of " + value3+ '  :  '  + ll.indexOf(value3)+'<br>'; 
+}
+
+
+function IsEmpty(){
+   document.getElementById(2).innerHTML ="IsEmpty :  " + ll.isEmpty()+'<br>' ; 
+}*/
+
+function add(value1){ 
+	value1 && ll.add(value1);
+	document.getElementById('a').value = '';
+}
+ 
+
+//document.write(ll.size_of_list()+'<br>'); 
+ 
+
+function show(){
+ document.getElementById('dad').innerHTML= ll.display(); 
+} 
+
+	</script>
+
+</body>
+</html>
