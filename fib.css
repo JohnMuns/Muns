@@ -1,0 +1,93 @@
+.container-div {
+    height: 150px;
+}
+
+#disk-1 {
+    background-color: black;
+    width: 60px;
+    height: 10px;
+    position: relative;
+    top: 100px;
+    left: 75px;
+}
+
+#disk-2 {
+    background-color: green;
+    width: 80px;
+    height: 10px;
+    /* float: left; */
+    position: relative;
+    top: 100px;
+    left: 65px;
+}
+
+#disk-3 {
+    background-color: red;
+    width: 100px;
+    height: 10px;
+    /* float: left; */
+    position: relative;
+    top: 100px;
+    left: 55px;
+}
+
+#pole-1 {
+    background-color: blue;
+    width: 10px;
+    height: 100px;
+    float: left;
+    position: relative;
+    top: 0;
+    left: 100px;
+}
+
+#pole-2 {
+    background-color: blue;
+    width: 10px;
+    float: left;
+    height: 100px;
+    position: relative;
+    top: 0;
+    left: 240px;
+}
+
+#pole-3 {
+    background-color: blue;
+    width: 10px;
+    height: 100px;
+    float: left;
+    height: 100px;
+    position: relative;
+    top: 0;
+    left: 370px;
+}
+
+#base-1 {
+    background-color: blue;
+    width: 120px;
+    height: 10px;
+    float: left;
+    position: relative;
+    top: 100px;
+    left: 15px;
+}
+
+#base-2 {
+    background-color: blue;
+    width: 120px;
+    height: 10px;
+    float: left;
+    position: relative;
+    top: 100px;
+    left: 40px;
+}
+
+#base-3 {
+    background-color: blue;
+    width: 120px;
+    height: 10px;
+    float: left;
+    position: relative;
+    top: 100px;
+    left: 70px;
+}
