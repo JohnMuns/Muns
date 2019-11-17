@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-color:  lightgrey;
+			text-align: center;
+		}
+		h1{
+			background-color: white;
+			text-align: center;
+			color: green;
+		}
+	
+	</style>
+	<link rel="stylesheet" type="text/css" href="my.css">
+	<title>
+		queue
+	</title>
+</head>
+<body >
+
+	<h1>QUEUE IMPLEMENTATION</h1>
+	<div>
+		<input id="fact" />
+		<button onclick = "add(document.getElementById('fact').value)">Enter</button>
+	</div>
+
+	<hr>
+	<button onclick = 'empty()'>IsEmpty</button>
+	<p id = '2'></p>
+	<hr>
+	<button onclick = 'full()'>IsFull</button>
+	<p id = '5'></p>
+	<hr>
+	<button onclick = 'show()'>elements</button>
+	<p id = '4'></p>
+    <hr>
+	<button onclick = 'high()'>front</button>
+	<p id = '3'></p>
+	<hr>
+	<button onclick = 'remove()'>Dequeue</button>
+    <p id = '1'></p>
+    <hr>
+    <button onclick = 'size()'>QueueSize</button>
+    <p id = '6'></p>
+	<script>
+		
+class Queue 
+{ 
+ 
+	constructor() 
+	{ 
+		this.items = []; 
+		this.length =0;
+	} 
+				
+enqueue(element) 
+{	 
+	if(this.isFull())
+		return 'overflow';
+
+	this.items.push(element);  
+	this.length++;
+} 
+ 
+dequeue() 
+{ 
+	if(this.isEmpty()) 
+		return "Underflow"; 
+	 return this.items.shift(); 
+} 
+
+front() 
+{ 
+	if(this.isEmpty()) 
+		return "No elements in Queue"; 
+	return this.items[0]; 
+} 
+
+isEmpty() 
+{ 
+	return this.items.length == 0; 
+} 
+isFull(){
+    return this.items.length == 10;
+}
+
+printQueue() 
+{ 
+	var str = ""; 
+	for(var i = this.items.length-1; i >-1 ; i--) 
+		str += this.items[i] +"<br>"; 
+	return str; 
+} 
+size(){
+	return 10;
+}
+} 
+var queue = new Queue(); 
+			
+   function remove(){
+document.getElementById(1).innerHTML = queue.dequeue()+"<br>"; 
+}
+  function empty(){
+document.getElementById(2).innerHTML = queue.isEmpty()+"<br>"; 
+}
+
+function add(value){
+	value && queue.enqueue(value);
+	document.getElementById('fact').value = '';
+}
+ 
+  function high(){
+ document.getElementById(3).innerHTML ="front  : "+queue.front()+"<br>";  
+}
+
+
+function show(){
+document.getElementById(4).innerHTML ="BEHIND <br>"+queue.printQueue()+"FRONT";
+}
+function full(){
+	document.getElementById(5).innerHTML = queue.isFull()+"<br>"; 
+}
+function size(){
+	document.getElementById(6).innerHTML = queue.size()+"<br>"; 
+}
+
+	</script>
+
+</body>
+</html>
